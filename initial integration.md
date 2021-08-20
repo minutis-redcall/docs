@@ -1,7 +1,6 @@
 # Minutis and RedCall resources
 
-The resources described below are the minimal requirements to make Minutis and RedCall work. There
-are much more functionalities that you can integrate through our APIs, but this format is a first
+The resources described below are the minimal requirements to make Minutis and RedCall work. There are much more functionalities that you can integrate through our APIs, but this format is a first
 step.
 
 ## Introduction
@@ -51,7 +50,7 @@ A badge is a skill, a nomination, a training certificate, or anything that helps
 
 ## Structures
 
-Structures are independant Red Cross sections that manage volunteers and organize operations. In Minutis, they are also used to define geographic zones in the main page.
+Structures are independant Red Cross sections that manage volunteers and organize operations. 
 
 ```json
 {
@@ -70,17 +69,44 @@ Structures are independant Red Cross sections that manage volunteers and organiz
 
 - `name` (max length: **64** bytes) is the structure name.
 
-- `type` can be either:
+- `type` can be either `leaf` (if it is a structure that can have operations) or `zone_geo` ()
 
- -  `leaf` (if it is a structure that can have operations)
- 
- -  `zone_geo` () For each structure of type zone_geo, please also provide a javascript file to describe the map area. Example can be found here: https://github.com/iblancasa/Spain-Provinces-Javascript-Map/blob/master/map.js
- -   **to be continued, this part seems super broad, and I don't even understand why these "zone geo" are the same resource as physical structures?)**
+- `geoLongitude` and `geoLatitude` are longitude and latitude of the center of the structure's physical location. It is only required for structures of type `leaf` and is used to render an operation with the map centered by default on the structure's location.
 
-- `geoLongitude` and `geoLatitude` are longitude and latitude of the center of the structure's  location. It is only required for structures of type `leaf`.
+## Volunteers
 
+A volunteer is a physical person belonging to the Red Cross. 
 
+```
+{
+  "externalId":"UNIQUE_ID",
+  "structureExternalId":"STRUCTURE_EXTERNAL_ID",
+  "badgeExternalIds": ["BADGE_1", "BADGE_2", ...],
+  "firstname":"FIRSTNAME",
+  "lastname":"LASTNAME",
+  "mail":"EMAIL",
+  "phone":"PHONE_NUMBER_IN_E164_FORMAT",
+  "canTriggerStructureExternalIds": [STRUCTURE_EXTERNAL_ID_1, STRUCTURE_EXTERNAL_ID_2...],
+  "canUseRedcallAPI": true|false,
+  "isRedcallAdmin": true|false
+}
+```
 
+- `structureExternalId` is the structure volunteer belongs to, in which it can be triggered (in order to join an operation).
+
+- `badgeExternalIds` is the collection of badges (see above) volunteer has
+
+- `firstname` and `lastname` have a maximum length of **80** bytes
+
+- `mail` is volunteer's main email, in which it will receive RedCall triggers
+
+- `phone` is the volunteer's phone number in [E164](https://en.wikipedia.org/wiki/E.164) format (eg. French number 06 60 93 61 63 becomes +33660936163)
+
+- `canTriggerStructureExternalIds` is the collection of structures a volunteer is allowed to trigger (if any), note that if one of these structures has children, volunteer will also be able to trigger them
+
+- `canUseRedcallAPI` is a boolean that you can set to `true` if the volunteer is a software developer that will integrate RedCall APIs
+
+- `isRedCallAdmin` is a boolean that you can set to `true` if the volunteer is a person that will manage RedCall resources (useful for support teams, project lead, etc)
 
 
 
