@@ -98,9 +98,9 @@ A volunteer is a physical person belonging to the Red Cross.
 
 - `firstname` and `lastname` have a maximum length of **80** bytes
 
-- `mail` is volunteer's main email, in which it will receive RedCall triggers
+- `mail` (max length **80** bytes) is volunteer's main email, in which it will receive RedCall triggers
 
-- `phone` is the volunteer's phone number in [E164](https://en.wikipedia.org/wiki/E.164) format (eg. French number 06 60 93 61 63 becomes +33660936163)
+- `phone` (max length **32** bytes) is the volunteer's phone number in [E164](https://en.wikipedia.org/wiki/E.164) format (eg. French number 06 60 93 61 63 becomes +33660936163)
 
 - `canTriggerStructureExternalIds` is the collection of structures a volunteer is allowed to trigger (if any), note that if one of these structures has children, volunteer will also be able to trigger them
 
@@ -108,6 +108,57 @@ A volunteer is a physical person belonging to the Red Cross.
 
 - `isRedCallAdmin` is a boolean that you can set to `true` if the volunteer is a person that will manage RedCall resources (useful for support teams, project lead, etc)
 
+## Vehicles
+
+Vehicles are usually ambulances, cars, trucks or any other mobilized vehicles during operations.
+
+```json
+{
+  "externalId":"LICENSE_PLATE",
+  "structureExternalId":"STRUCTURE_EXTERNAL_ID",
+  "name":"UNIQUE_NAME",,
+  "type":"TYPE_OF_THE_VEHICLE"
+}
+```
+
+- `structureExternalId` is the structure for which the vehicle belongs to
+
+- `name` (max length **XX** bytes) is the vehicle's name
+
+- `type` is the type of vehicle, coming from a static enumeration (we currently have a list in French, please provide the name you want to be rendered. We will develop APIs to have lists in according to the language).
+
+## Radios
+
+To comment
+
+```json
+// Radios:
+{
+  "externalId":"UNIQUE_ID",
+  "structureExternalId":"STRUCTURE_EXTERNAL_ID",
+  "name":"NAME"
+}
+```
+
+- `structureExternalId` is the structure for which the radio belongs to
+
+- `name` (max length **XX** bytes) is the radio's name
+
+## Relays
+
+Relays are antennas that cover radio emissions
+
+```
+{
+  "externalId":"UNIQUE_ID",
+  "structureExternalId":"STRUCTURE_EXTERNAL_ID",
+  "name":"NAME"
+}
+```
+
+- `structureExternalId` is the structure for which the relay belongs to
+
+- `name` (max length **XX** bytes) is the relay's name
 
 
 
