@@ -132,7 +132,6 @@ Vehicles are usually ambulances, cars, trucks or any other mobilized vehicles du
 To comment
 
 ```json
-// Radios:
 {
   "externalId":"UNIQUE_ID",
   "structureExternalId":"STRUCTURE_EXTERNAL_ID",
@@ -148,7 +147,7 @@ To comment
 
 Relays are antennas that cover radio emissions
 
-```
+```json
 {
   "externalId":"UNIQUE_ID",
   "structureExternalId":"STRUCTURE_EXTERNAL_ID",
