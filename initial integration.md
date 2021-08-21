@@ -77,7 +77,7 @@ Structures are independant Red Cross sections that manage volunteers and organiz
 
 A volunteer is a physical person belonging to the Red Cross. 
 
-```
+```json
 {
   "externalId":"UNIQUE_ID",
   "structureExternalId":"STRUCTURE_EXTERNAL_ID",
@@ -116,7 +116,7 @@ Vehicles are usually ambulances, cars, trucks or any other mobilized vehicles du
 {
   "externalId":"LICENSE_PLATE",
   "structureExternalId":"STRUCTURE_EXTERNAL_ID",
-  "name":"UNIQUE_NAME",,
+  "name":"UNIQUE_NAME",
   "type":"TYPE_OF_THE_VEHICLE"
 }
 ```
