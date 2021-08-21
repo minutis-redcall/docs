@@ -60,7 +60,7 @@ Structures are independant Red Cross sections that manage volunteers and organiz
   "type":"zone_geo or leaf",
   "geoLongitude":"LONGITUDE_OF_THE_CENTER_OF_THE_STRUCTURE",
   "geoLatitude":"LATITUDE_OF_THE_CENTER_OF_THE_STRUCTURE"
-
+}
 ```
 
 - `externalId`: just a side note here, on Minutis API endpoints returning structures, your structure `externalId` will be prefixed with `red_cross_spain_` (for example if you set *1234* as `externalId`, the API will expose *red\_cross\_spain_1234*).
